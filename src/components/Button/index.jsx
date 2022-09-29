@@ -1,12 +1,12 @@
 import React from 'react';
+import css from './style.module.css';
 import PropTypes from 'prop-types';
-import styles from './styles.module.css';
 
 const Button = ({ onLoadMoreClick }) => {
   return (
     <button
       onClick={() => onLoadMoreClick()}
-      className={styles.button}
+      className={css.button}
       type="button"
     >
       Load more
@@ -14,8 +14,8 @@ const Button = ({ onLoadMoreClick }) => {
   );
 };
 
+export default Button;
+
 Button.propTypes = {
   onLoadMoreClick: PropTypes.func.isRequired,
 };
-
-export default Button;

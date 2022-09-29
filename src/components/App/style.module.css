@@ -1,0 +1,14 @@
+/* .container {
+  width: 160px;
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px;
+  text-align: center;
+  background-color: aqua;
+} */
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  padding-bottom: 24px;
+}

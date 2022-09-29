@@ -1,33 +1,39 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles.module.css';
+import css from './style.module.css';
 
-function SearchBar({ onSubmit }) {
+const SearchBar = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState('');
 
-  const handleInputChange = evt => {
-    setInputValue(evt.currentTarget.value);
+  const handleInputChange = e => {
+    setInputValue(e.currentTarget.value);
   };
 
-  const onFormSubmit = evt => {
-    evt.preventDefault();
+  const onFormSubmit = e => {
+    e.preventDefault();
     if (inputValue === '') {
       alert('Введите название');
       return;
     }
 
     onSubmit(inputValue);
+    reset();
+  };
+  const reset = () => {
+    setInputValue('');
   };
 
   return (
-    <header className={styles.searchbar}>
-      <form onSubmit={onFormSubmit} className={styles.searchForm}>
-        <button type="submit" className={styles.searchFormButton}></button>
+    <header className={css.searchBar}>
+      <form onSubmit={onFormSubmit} className={css.form}>
+        <button type="submit" className={css.button}>
+          <span className={css.button_label}>Search</span>
+        </button>
 
         <input
           onChange={handleInputChange}
           value={inputValue}
-          className={styles.searchFormInput}
+          className={css.input}
           type="text"
           autoComplete="off"
           autoFocus
@@ -36,9 +42,9 @@ function SearchBar({ onSubmit }) {
       </form>
     </header>
   );
-}
+};
 
-SearchBar.propTypes = {
+SearchBar.protoType = {
   onSubmit: PropTypes.func.isRequired,
 };
 

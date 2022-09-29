@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
-import SearchBar from 'components/Searchbar';
+import SearchBar from 'components/SearchBar';
 import ImageGallery from 'components/ImageGallery';
-import Button from 'components/Button';
 import Loader from 'components/Loader';
+import Button from 'components/Button';
 import Modal from 'components/Modal';
-import styles from './styles.module.css';
+import css from './style.module.css';
 
-const APIKEY = '27281986-59f4397e165b177c7084776c9';
+const APIKEY = '27833874-1888522c36b844d581276598f';
 
-function App() {
+const App = () => {
   const [name, setName] = useState('');
   const [images, setImages] = useState([]);
   const [page, setPage] = useState(1);
@@ -51,7 +51,6 @@ function App() {
     setImages([]);
     setPage(1);
   };
-
   const onLoadMoreClick = () => {
     setPage(prevState => prevState + 1);
   };
@@ -67,20 +66,25 @@ function App() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={css.container}>
+      {/* <Post title="Post Header" text="Post text" link="alerts" />
+      <ShoppingCart items={data} />
+      <MyClassComponent /> */}
       <SearchBar onSubmit={handleSubmit} />
       {loading && <Loader />}
       {images.length !== 0 && (
         <ImageGallery images={images} openModal={openModal} />
       )}
-      {showModal && (
-        <Modal image={modalImage} tag={tag} onModalClose={modalClose} />
-      )}
+
       {!loading && images.length !== totalImages && showBtn && (
         <Button onLoadMoreClick={onLoadMoreClick} />
       )}
+
+      {showModal && (
+        <Modal image={modalImage} tag={tag} onModalClose={modalClose} />
+      )}
     </div>
   );
-}
+};
 
 export default App;

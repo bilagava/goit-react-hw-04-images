@@ -1,11 +1,11 @@
 import React from 'react';
+import ImageGalleryItem from '../ImageGalleryItem';
 import PropTypes from 'prop-types';
-import ImageGalleryItem from './ImageGalleryItem';
-import styles from './styles.module.css';
+import css from './style.module.css';
 
-const ImageGallery = ({ images, openModal }) => {
+export const ImageGallery = ({ images, openModal }) => {
   return (
-    <ul className={styles.gallery}>
+    <ul className={css.gallery}>
       {images.map(({ id, webformatURL, largeImageURL, tags }) => (
         <ImageGalleryItem
           key={id}
@@ -29,5 +29,3 @@ ImageGallery.propTypes = {
     }).isRequired
   ).isRequired,
 };
-
-export default ImageGallery;
