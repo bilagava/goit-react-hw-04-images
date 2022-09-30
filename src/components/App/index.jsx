@@ -30,17 +30,18 @@ const App = () => {
       .then(response => response.json())
       .then(image => {
         if (!image.total) {
-          setLoading(false);
+          // setLoading(false);
           setShowBtn(false);
           return alert('К сожалению по Вашему запросу ничего не найдено');
         }
 
         setImages(prevState => [...prevState, ...image.hits]);
         setTotalImages(image.total);
-        setLoading(false);
+        // setLoading(false);
         setShowBtn(true);
       })
-      .catch(error => error);
+      .catch(error => error)
+      .finally(() => setLoading(false));
   }, [name, page]);
 
   const handleSubmit = inputName => {
