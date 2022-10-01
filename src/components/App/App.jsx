@@ -5,9 +5,7 @@ import Loader from 'components/Loader/Loader';
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
 import css from './style.module.css';
-// import imagesAPI from '../../services/apiService';
-
-const APIKEY = '27833874-1888522c36b844d581276598f';
+import imagesAPI from '../../services/fetchImages.js';
 
 const App = () => {
   const [name, setName] = useState('');
@@ -25,10 +23,7 @@ const App = () => {
       return;
     }
     setLoading(true);
-    fetch(
-      `https://pixabay.com/api/?q=${name}&page=${page}&key=${APIKEY}&image_type=photo&orientation=horizontal&per_page=12`
-    )
-      .then(response => response.json())
+    imagesAPI(name, page)
       .then(image => {
         if (!image.total) {
           setShowBtn(false);
