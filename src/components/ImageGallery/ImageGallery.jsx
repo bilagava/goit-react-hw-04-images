@@ -3,7 +3,7 @@ import ImageGalleryItem from '../ImageGalleryItem';
 import PropTypes from 'prop-types';
 import css from './style.module.css';
 
-export const ImageGallery = ({ images, openModal }) => {
+const ImageGallery = ({ images, openModal }) => {
   return (
     <ul className={css.gallery}>
       {images.map(({ id, webformatURL, largeImageURL, tags }) => (
@@ -17,6 +17,8 @@ export const ImageGallery = ({ images, openModal }) => {
     </ul>
   );
 };
+
+export default ImageGallery;
 
 ImageGallery.propTypes = {
   openModal: PropTypes.func.isRequired,

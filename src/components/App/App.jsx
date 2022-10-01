@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import SearchBar from 'components/SearchBar';
 import ImageGallery from 'components/ImageGallery';
-import Loader from 'components/Loader';
-import Button from 'components/Button';
-import Modal from 'components/Modal';
+import Loader from 'components/Loader/Loader';
+import Button from 'components/Button/Button';
+import Modal from 'components/Modal/Modal';
 import css from './style.module.css';
+// import imagesAPI from '../../services/apiService';
 
 const APIKEY = '27833874-1888522c36b844d581276598f';
 
@@ -30,14 +31,12 @@ const App = () => {
       .then(response => response.json())
       .then(image => {
         if (!image.total) {
-          // setLoading(false);
           setShowBtn(false);
           return alert('К сожалению по Вашему запросу ничего не найдено');
         }
 
         setImages(prevState => [...prevState, ...image.hits]);
         setTotalImages(image.total);
-        // setLoading(false);
         setShowBtn(true);
       })
       .catch(error => error)
@@ -68,9 +67,6 @@ const App = () => {
 
   return (
     <div className={css.container}>
-      {/* <Post title="Post Header" text="Post text" link="alerts" />
-      <ShoppingCart items={data} />
-      <MyClassComponent /> */}
       <SearchBar onSubmit={handleSubmit} />
       {loading && <Loader />}
       {images.length !== 0 && (
